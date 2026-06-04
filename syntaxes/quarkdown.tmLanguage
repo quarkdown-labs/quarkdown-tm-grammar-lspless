@@ -4247,6 +4247,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#function_call</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#image-inline</string>
           </dict>
           <dict>
@@ -4278,6 +4282,66 @@
             <string>#link-ref-shortcut</string>
           </dict>
         </array>
+      </dict>
+      <key>function_call</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#function_call_dot</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#function_call_chain</string>
+          </dict>
+        </array>
+      </dict>
+      <key>function_call_dot</key>
+      <dict>
+        <key>match</key>
+        <string>(?&lt;!\w)(?:(\.)([a-zA-Z][a-zA-Z0-9]*)|([0-9]+))</string>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.function.quarkdown</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.function.quarkdown</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>constant.numeric.quarkdown</string>
+          </dict>
+        </dict>
+      </dict>
+      <key>function_call_chain</key>
+      <dict>
+        <key>match</key>
+        <string>(?&lt;=[\w}])(::)(?:([a-zA-Z][a-zA-Z0-9]*)|([0-9]+))</string>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.function.quarkdown</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.function.quarkdown</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>constant.numeric.quarkdown</string>
+          </dict>
+        </dict>
       </dict>
       <key>ampersand</key>
       <dict>

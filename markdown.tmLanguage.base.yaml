@@ -258,6 +258,7 @@ repository:
     - {include: '#raw'}
     - {include: '#strikethrough'}
     - {include: '#escape'}
+    - {include: '#function_call'}
     - {include: '#image-inline'}
     - {include: '#image-ref'}
     - {include: '#link-email'}
@@ -266,6 +267,22 @@ repository:
     - {include: '#link-ref'}
     - {include: '#link-ref-literal'}
     - {include: '#link-ref-shortcut'}
+  function_call:
+    patterns:
+    - {include: '#function_call_dot'}
+    - {include: '#function_call_chain'}
+  function_call_dot:
+    match: (?<!\w)(?:(\.)([a-zA-Z][a-zA-Z0-9]*)|([0-9]+))
+    captures:
+      '1': {name: punctuation.definition.function.quarkdown}
+      '2': {name: entity.name.function.quarkdown}
+      '3': {name: constant.numeric.quarkdown}
+  function_call_chain:
+    match: (?<=[\w}])(::)(?:([a-zA-Z][a-zA-Z0-9]*)|([0-9]+))
+    captures:
+      '1': {name: punctuation.definition.function.quarkdown}
+      '2': {name: entity.name.function.quarkdown}
+      '3': {name: constant.numeric.quarkdown}
   ampersand:
     comment: "Markdown will convert this for us. We match it so that the HTML grammar will not mark it up as invalid."
     match: '&(?!([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);)'
