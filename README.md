@@ -1,12 +1,8 @@
-# VS Code Markdown Grammar
+# Quarkdown LSP-less Grammar
 
-[![Build Status](https://dev.azure.com/monacotools/Monaco/_apis/build/status/Extensions/microsoft.vscode-markdown-tm-grammar?branchName=main)](https://dev.azure.com/monacotools/Monaco/_build/latest?definitionId=203&branchName=main)
+This is an extension of the base Quarkdown TM Grammar used in the VS Code extension. That grammar provides markup highlighting, and is built for integrating with the Quarkdown LSP, which provides semantic tokens of function calls.
 
-VS Code markdown extension's TextMate grammar.
-
-## Contributing
-
-The main grammar is stored in `syntaxes/markdown.tmLanguage`. This file is generated from `markdown.tmLanguage.base.yaml`:
+This grammar adds *heuristic* highlighting for function calls for environments that don't expect an LSP, such as github/linguist. Since it's a heuristic matching of a context-dependent feature, there may be false positives.
 
 ### Building
 
